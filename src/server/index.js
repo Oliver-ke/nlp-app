@@ -3,6 +3,7 @@ const express = require('express');
 const mockAPIResponse = require('./mockAPI.js');
 const { config } = require('dotenv');
 const Aylien = require('aylien_textapi');
+
 config();
 
 const app = express();
@@ -14,16 +15,17 @@ const textapi = new Aylien({
 
 app.use(express.static('dist'));
 
-app.get('/', function(req, res) {
-	// res.sendFile('dist/index.html')
-	res.sendFile(path.resolve('src/client/views/index.html'));
+app.get('/', (req, res) => {
+	res.sendFile('dist/index.html');
 });
 
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function() {
-	console.log('Example app listening on port 8080!');
-});
-
+// test endpoint
 app.get('/test', function(req, res) {
 	res.send(mockAPIResponse);
+});
+
+const PORT = 5000 || process.env.PORT;
+
+app.listen(PORT, () => {
+	console.log(`Server started on port ${PORT}`);
 });

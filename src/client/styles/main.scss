@@ -1,0 +1,11 @@
+$secondary-color: #000;
+$background-color: #ccc;
+
+body {
+	h1: {
+		color: $secondary-color;
+	}
+	section: {
+		background-color: $background-color;
+	}
+}
