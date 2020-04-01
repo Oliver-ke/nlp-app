@@ -1,11 +1,143 @@
-$secondary-color: #000;
-$background-color: #ccc;
+@import url('https://fonts.googleapis.com/css?family=Baloo+2|Source+Sans+Pro&display=swap');
+
+$secondary-color: #222831;
+$primary-color: #0077b5;
+$content-background: #1a1d24;
 
 body {
-	h1: {
-		color: $secondary-color;
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Baloo 2', cursive;
+}
+
+header {
+	width: 100%;
+	background-color: $secondary-color;
+	height: 60px;
+	margin-bottom: 1rem;
+	color: #fff;
+	box-shadow: 0px 3px 50px #0000001F;
+	.logo {
+		height: 60px;
+		margin-left: 2rem;
+		h3 {
+			margin-block-start: 0;
+			margin-block-end: 0;
+			line-height: 60px;
+			font-size: 2rem;
+		}
+		span {
+			color: #9ac601;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
 	}
-	section: {
-		background-color: $background-color;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 160px);
+	justify-content: center;
+	align-items: center;
+	section {
+		width: 50vw;
+		.indicator {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			.spinner {
+				width: 2rem;
+				height: 2rem;
+				border: 3px solid rgba(0, 0, 0, .25);
+				border-top-color: rgba(255, 255, 255, .5);
+				border-radius: 50%;
+				animation: rotation .8s ease infinite;
+				margin-bottom: 1rem;
+				display: none;
+				&.show-spinner {
+					display: block;
+				}
+			}
+			span {
+				color: red;
+				display: none;
+				&.show-error {
+					display: block;
+				}
+			}
+		}
+		form {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			textarea {
+				margin-bottom: 0.5rem;
+				width: 100%;
+				border: 3px solid $primary-color;
+				font-size: 1.3rem;
+				border-radius: 5px;
+				padding: 8px;
+			}
+			input[type="submit"] {
+				height: auto;
+				width: 200px;
+				background-color: $content-background;
+				border: none;
+				color: #fff;
+				padding: 10px;
+				font-size: 1rem;
+				font-weight: bold;
+				cursor: pointer;
+				border-radius: 5px;
+				margin-bottom: 1rem;
+			}
+		}
+		#results {
+			border: 3px solid #ccc;
+			min-height: 200px;
+			border-radius: 5px;
+			width: 100%;
+			padding: 0 1rem;
+			color: #ccc;
+			line-height: 20px;
+			background-color: #1e2329;
+			font-size: 1.3rem;
+			display: none;
+			span {
+				color: $primary-color;
+			}
+			&.show-result {
+				display: block;
+			}
+		}
+	}
+}
+
+footer {
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin-top: 2rem;
+	box-shadow: 0px 3px 50px #0000001F;
+	background: #ccc;
+	text-align: center;
+	p {
+		font-size: 1.2rem;
+	}
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }
